@@ -56,6 +56,19 @@ public class TestComponenteGamificacao {
 		
 	}
 
+	@Test
+	public void testeCurtindoComentario() {
+		
+		MemoryAchievementStorage storage = MemoryAchievementStorage.criarMemoryAchievementStorage();
+		storage.setObservadores(Arrays.asList(new AchievementObserverInventor(), new AchievementObserverPartOfTheCommunity()));
+		
+		AchievementStorageFactory.setAchievementStorage(storage);
+		
+		ForumService forumService = new ForumServiceGamificationProxy(new ForumServiceMock());
+		
+		forumService.likeComment("jonatas", "topico aleatorio", "coment", "coment user");
+		
+	}
 
 
 
