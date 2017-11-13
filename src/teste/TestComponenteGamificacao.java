@@ -84,6 +84,24 @@ public class TestComponenteGamificacao {
 		forumService.addTopic("jonatas", "Topico de teste2");
 		
 	}
+	
+	@Test
+	public void testeAdicionandoTopicoVariasVezesAteAtingirOBadgeInventor() {
+		
+		MemoryAchievementStorage storage = MemoryAchievementStorage.criarMemoryAchievementStorage();
+		storage.setObservadores(Arrays.asList(new AchievementObserverInventor(), new AchievementObserverPartOfTheCommunity()));
+		
+		AchievementStorageFactory.setAchievementStorage(storage);
+		
+		ForumService forumService = new ForumServiceGamificationProxy(new ForumServiceMock());
+		
+		for (int i = 0; i <= 20; i++) {
+			forumService.addTopic("jonatas", "Topico de teste"+i);
+		}
+		
+		
+	}
 
+	
 
 }
