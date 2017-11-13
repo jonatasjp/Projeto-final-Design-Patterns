@@ -42,7 +42,19 @@ public class TestComponenteGamificacao {
 		
 	}
 	
-
+	@Test
+	public void testeCurtindoTopico() {
+		
+		MemoryAchievementStorage storage = MemoryAchievementStorage.criarMemoryAchievementStorage();
+		storage.setObservadores(Arrays.asList(new AchievementObserverInventor(), new AchievementObserverPartOfTheCommunity()));
+		
+		AchievementStorageFactory.setAchievementStorage(storage);
+		
+		ForumService forumService = new ForumServiceGamificationProxy(new ForumServiceMock());
+		
+		forumService.likeTopic("jonatas", "topico teste", "usuário aleatório");
+		
+	}
 
 
 
