@@ -99,9 +99,22 @@ public class TestComponenteGamificacao {
 			forumService.addTopic("jonatas", "Topico de teste"+i);
 		}
 		
-		
 	}
 
-	
+	@Test
+	public void testeAdicionandoComentarioVariasVezesAteAtingirOBadgePartOfTheCommunity() {
+		
+		MemoryAchievementStorage storage = MemoryAchievementStorage.criarMemoryAchievementStorage();
+		storage.setObservadores(Arrays.asList(new AchievementObserverInventor(), new AchievementObserverPartOfTheCommunity()));
+		
+		AchievementStorageFactory.setAchievementStorage(storage);
+		
+		ForumService forumService = new ForumServiceGamificationProxy(new ForumServiceMock());
+		
+		for (int i = 0; i <= 40; i++) {
+			forumService.addComment("jonatas", "Topico de teste"+i, "comentario aleatorio");
+		}
+		System.out.println(storage.getAchievement("jonatas", "PART OF THE COMMUNITY").getName());
+	}
 
 }
