@@ -70,6 +70,20 @@ public class TestComponenteGamificacao {
 		
 	}
 
+	@Test
+	public void testeAdicionandoTopicoDuasVezes() {
+		
+		MemoryAchievementStorage storage = MemoryAchievementStorage.criarMemoryAchievementStorage();
+		storage.setObservadores(Arrays.asList(new AchievementObserverInventor(), new AchievementObserverPartOfTheCommunity()));
+		
+		AchievementStorageFactory.setAchievementStorage(storage);
+		
+		ForumService forumService = new ForumServiceGamificationProxy(new ForumServiceMock());
+		
+		forumService.addTopic("jonatas", "Topico de teste1");
+		forumService.addTopic("jonatas", "Topico de teste2");
+		
+	}
 
 
 }
