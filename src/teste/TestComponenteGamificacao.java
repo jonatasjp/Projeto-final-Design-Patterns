@@ -28,7 +28,19 @@ public class TestComponenteGamificacao {
 		
 	}
 
-
+	@Test
+	public void testeAdicionandoComentario() {
+		
+		MemoryAchievementStorage storage = MemoryAchievementStorage.criarMemoryAchievementStorage();
+		storage.setObservadores(Arrays.asList(new AchievementObserverInventor(), new AchievementObserverPartOfTheCommunity()));
+		
+		AchievementStorageFactory.setAchievementStorage(storage);
+		
+		ForumService forumService = new ForumServiceGamificationProxy(new ForumServiceMock());
+		
+		forumService.addComment("jonatas", "topico teste", "comentário aleatório");
+		
+	}
 	
 
 
