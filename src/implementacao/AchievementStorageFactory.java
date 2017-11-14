@@ -2,14 +2,14 @@ package implementacao;
 
 public class AchievementStorageFactory {
 
-	private static AchievementStorage achievementStorage;
+	private static AchievementStorage instance;
 	
 	public static AchievementStorage getAchievementStorage() {
-		return achievementStorage;
+		return instance;
 	}
 	
 	public static void setAchievementStorage(AchievementStorage achievementStorage) {
-		AchievementStorageFactory.achievementStorage = achievementStorage; 
+		instance = achievementStorage; 
 	}
 	
 }
